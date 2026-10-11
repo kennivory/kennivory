@@ -1,4 +1,4 @@
-## Hi there 👋
+## Operations and logistics professional with a strong background in international humanitarian response and program support. MEAL-trained and detail-oriented, with experience across diverse global environments including Afghanistan, Uganda, and Southeast Asia. Proven success in managing supply chains, coordinating cross-functional teams, maintaining IT systems, and ensuring compliance with financial, procurement, and security protocols. Highly organized self-starter with excellent interpersonal and communication skills, capable of working under pressure and across departments to support program excellence.
 
 <!--
 **kennivory/kennivory** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
