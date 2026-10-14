@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kenneth Ivory Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a shipping-manifest page — one column of "lanes", each section logged like a leg in a supply chain */
+:root{
+  --bg:#f3f4f2; --surface:#ffffff; --ink:#16202a; --muted:#5a6672; --line:#d5d9dc;
+  --accent:#e8590c; --accent-ink:#ffffff; --steel:#2f4858; --draft:#fff4e6; --draft-line:#f5b88a;
+  --display:"Archivo",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11171d; --surface:#18212a; --ink:#e7ebee; --muted:#9aa6b1; --line:#2c3843;
+  --accent:#ff7a33; --accent-ink:#1a0d04; --steel:#8fb3c9; --draft:#2a1d12; --draft-line:#8a4d24; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11171d; --surface:#18212a; --ink:#e7ebee; --muted:#9aa6b1; --line:#2c3843;
+  --accent:#ff7a33; --accent-ink:#1a0d04; --steel:#8fb3c9; --draft:#2a1d12; --draft-line:#8a4d24; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:960px;margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* top manifest bar */
+.manifest{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+  padding-block:20px;border-bottom:1px solid var(--line)}
+.manifest b{color:var(--ink);font-weight:500}
+.status{display:inline-flex;align-items:center;gap:8px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:#2f9e44}
+
+/* hero */
+header.hero{padding-block:56px 40px;display:grid;gap:20px}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-stretch:118%;font-weight:800;font-size:clamp(44px,9vw,92px);line-height:.92;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h1 span{display:block;font-stretch:80%;font-weight:500;color:var(--steel)}
+.lede{font-size:clamp(17px,2.2vw,20px);max-width:60ch;color:var(--ink);margin:0}
+.lede em{font-style:normal;color:var(--muted)}
+
+/* SCOR lane */
+.lane{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);background:var(--surface);margin-block:8px 56px}
+.lane div{padding:14px 12px;border-right:1px solid var(--line);display:grid;gap:2px}
+.lane div:last-child{border-right:0}
+.lane small{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+.lane strong{font-family:var(--display);font-stretch:110%;font-size:17px}
+.lane .on{background:var(--accent);color:var(--accent-ink)}
+.lane .on small{color:var(--accent-ink);opacity:.85}
+@media (max-width:620px){.lane{grid-template-columns:repeat(2,minmax(0,1fr))}.lane div{border-bottom:1px solid var(--line)}.lane div:nth-child(2n){border-right:0}}
+
+/* sections */
+section{display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;padding-block:40px;border-top:2px solid var(--ink)}
+@media (max-width:720px){section{grid-template-columns:minmax(0,1fr);gap:16px}}
+.sec-label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sec-label b{display:block;font-family:var(--display);font-stretch:115%;font-size:24px;letter-spacing:-.01em;text-transform:none;color:var(--ink);margin-top:4px}
+.stack{display:grid;gap:16px;min-width:0}
+p{margin:0;max-width:65ch}
+
+/* experience log */
+.log{display:grid;gap:0;border:1px solid var(--line);background:var(--surface)}
+.row{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .code{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;padding-top:3px}
+.row h3{margin:0;font-family:var(--display);font-stretch:105%;font-size:19px;line-height:1.3}
+.row .org{color:var(--muted);font-size:15px}
+.row ul{margin:8px 0 0;padding-left:18px;color:var(--ink)}
+@media (max-width:480px){.row{grid-template-columns:minmax(0,1fr);gap:4px}}
+
+/* project cards */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:720px){.projects{grid-template-columns:minmax(0,1fr)}}
+.proj{border:1px solid var(--line);background:var(--surface);padding:20px;display:grid;gap:12px;align-content:start}
+.proj .tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.proj h3{margin:0;font-family:var(--display);font-stretch:108%;font-size:20px;line-height:1.25}
+.proj dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;font-size:14px}
+.proj dt{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.proj dd{margin:0}
+
+/* draft slots — content Kenneth still needs to supply */
+.draft{background:var(--draft);border:1px dashed var(--draft-line)}
+.draft-note{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.03em}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:14px;padding:4px 10px;border:1px solid var(--line);background:var(--surface)}
+.chip.dashed{border-style:dashed;border-color:var(--draft-line);background:var(--draft)}
+
+/* contact */
+.contact{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.email{font-family:var(--mono);font-size:16px;padding:10px 14px;border:1px solid var(--line);background:var(--surface);user-select:all;overflow-wrap:anywhere}
+button{font:500 14px var(--body);padding:10px 16px;border:0;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+button:hover{filter:brightness(1.08)}
+footer{margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+@media (prefers-reduced-motion:no-preference){.status::before{animation:pulse 2.4s ease-in-out infinite}@keyframes pulse{50%{opacity:.35}}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="manifest">
+    <span>Shipment <b>KI-2026</b> · Portfolio</span>
+    <span class="status">Open to internships &amp; SCM roles</span>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">Supply Chain Management · Applied AI</div>
+    <h1>Kenneth Ivory <span>Operations, end to end.</span></h1>
+    <p class="lede">Army veteran and former humanitarian operations coordinator, now earning a master's in Supply Chain Management. I use AI and analytics to make supply chains faster, leaner, and more resilient. <em>I've seen what happens when they break.</em></p>
+  </header>
+
+  <div class="lane" aria-label="SCOR supply chain stages">
+    <div><small>SCOR 01</small><strong>Plan</strong></div>
+    <div class="on"><small>SCOR 02</small><strong>Source</strong></div>
+    <div><small>SCOR 03</small><strong>Make</strong></div>
+    <div class="on"><small>SCOR 04</small><strong>Deliver</strong></div>
+    <div><small>SCOR 05</small><strong>Return</strong></div>
+  </div>
+
+  <section id="about">
+    <div class="sec-label">Origin<b>About</b></div>
+    <div class="stack">
+      <p>My path into supply chain started in the field. In the U.S. Army and at the International Rescue Committee, logistics wasn't a spreadsheet exercise. It decided whether people and supplies showed up on time.</p>
+      <p>Now I'm combining that operational experience with graduate training in supply chain management and hands-on work with AI tools for forecasting, planning, and decision support.</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-label">Route history<b>Experience</b></div>
+    <div class="log">
+      <div class="row">
+        <div class="code">2026 – now</div>
+        <div><h3>Graduate Student Assistant</h3><div class="org">Veterans Office, Business School</div></div>
+      </div>
+      <div class="row">
+        <div class="code">IRC · Leg 2</div>
+        <div><h3>Operations Coordinator</h3><div class="org">International Rescue Committee</div>
+          <ul class="draft-note"><li>Add 2–3 results with numbers (e.g. sites supported, lead time cut, budget managed)</li></ul></div>
+      </div>
+      <div class="row">
+        <div class="code">IRC · Leg 1</div>
+        <div><h3>Operations Specialist</h3><div class="org">International Rescue Committee</div>
+          <ul class="draft-note"><li>Add your key responsibilities and one standout win</li></ul></div>
+      </div>
+      <div class="row">
+        <div class="code">Service</div>
+        <div><h3>U.S. Army</h3><div class="org">Veteran</div>
+          <ul class="draft-note"><li>Add your role/MOS and logistics-relevant experience</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-label">Cargo<b>AI × SCM Projects</b></div>
+    <div class="stack">
+      <div class="projects">
+        <article class="proj draft">
+          <div class="tag">Project 01 · Forecasting</div>
+          <h3>Your project title</h3>
+          <dl><dt>Problem</dt><dd>What supply chain problem did you tackle?</dd>
+              <dt>AI / tools</dt><dd>e.g. Python, Excel Solver, ML model, LLM</dd>
+              <dt>Result</dt><dd>A number: % error reduced, $ saved, days cut</dd></dl>
+        </article>
+        <article class="proj draft">
+          <div class="tag">Project 02 · Network / Inventory</div>
+          <h3>Your project title</h3>
+          <dl><dt>Problem</dt><dd>Class project, case competition, or work problem</dd>
+              <dt>AI / tools</dt><dd>What you built or used</dd>
+              <dt>Result</dt><dd>What changed because of it</dd></dl>
+        </article>
+      </div>
+      <p class="draft-note">Draft slots. Send me your projects and I'll write these up.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-label">Toolkit<b>Skills</b></div>
+    <div class="stack">
+      <div class="chips">
+        <span class="chip">Operations coordination</span>
+        <span class="chip">Humanitarian logistics</span>
+        <span class="chip">Military logistics</span>
+        <span class="chip dashed">+ your tools (Excel, SQL, Python, Tableau, SAP…)</span>
+        <span class="chip dashed">+ AI tools you use</span>
+        <span class="chip dashed">+ certifications (APICS / ASCM, Lean Six Sigma…)</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-label">Dispatch<b>Contact</b></div>
+    <div class="stack">
+      <div class="contact">
+        <span class="email" id="email">kivory@umd.edu</span>
+        <button type="button" id="copy">Copy email</button>
+      </div>
+      <p class="draft-note">Add your LinkedIn URL and résumé link here.</p>
+    </div>
+  </section>
+
+  <footer>Kenneth Ivory · Supply Chain Management · Last updated Oct 2026</footer>
+</div>
+
+<script>
+document.getElementById('copy').addEventListener('click',function(){
+  var b=this,t=document.getElementById('email').textContent;
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected, press Ctrl+C';}
+  try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy email'},1800)},sel)}catch(e){sel()}
+});
+</script>
+</body>
+</html>
